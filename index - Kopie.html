@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>Eingabeformular</title>
+        <link rel="stylesheet" type="text/css" href="css/styleSheet.css">
+        <script type="text/javascript" src="js/nurZahl.js"></script>
+    </head>
+    <body>
+    	<h1>Eingabeformular</h1>
+    	<p class="ben">Felder mit <span class="stern">★</span> werden benötigt</p>
+        <form name="eformular" action='<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>' method="post">
+	    	<table width="520" align="left" cellpadding="4">
+	    		<tr>
+	    			<td width="120"><label class="pointer" for="datum">Datum:</label></td>
+	    			<td>
+	    				<input type="date" min="1899-01-01" max="2099-01-01" name="datum" id="datum" placeholder="TT.MM.JJJJ" required>
+	    			</td>
+	    			<td>
+	    				<span class="error">* <?php echo $datumErr;?></span>
+	    			</td>
+	    		</tr>
+		    	<tr>
+		    		<td width="120"><label class="pointer" for="plz">Postleitzahl:</label></td>
+		    		<td>
+		    			<input type="text" minlength="4" maxlength="5" name="plz" id="plz" placeholder="12345" onkeypress="validate_plz(event);" required>
+		    		</td>
+		    		<td>
+	    				<span class="error">* <?php echo $plzErr;?></span>
+	    			</td>
+		    	</tr>
+		    	<tr>
+		    		<td width="120"><label class="pointer" for="email">E-Mail:</label></td>
+		    		<td>
+		    			<input type="email" name="email" id="email" placeholder="example@domain.com" required>
+		    		</td>
+		    		<td>
+	    				<span class="error">* <?php echo $emailErr;?></span>
+	    			</td>
+		    	</tr>
+		    	<tr>
+		    		<td width="120"><label class="pointer" for="preis">Preis:</label></td>
+		    		<td>
+		    			<input type="text" name="preis" id="preis" placeholder="0,00" pattern="\d+(,\d{2})" onkeypress="validate_preis(event);" required> &euro;
+		    		</td>
+		    		<td>
+	    				<span class="error">* <?php echo $preisErr;?></span>
+	    			</td>
+		    	</tr>
+		    	<tr>
+		    		<td width="100"><input class="pointer zurueck" type="reset" name="leeren" value="Zur&uuml;cksetzen"></td>
+		    		<td><input class="pointer" type="submit" name="senden" value="Absenden"></td>
+		    	</tr>
+		    </table>
+	    </form>
+	    <footer>
+    		<p class="footerbox">Testaufgabe von Jan Wöde</p>
+   		</footer>
+    </body>
+</html>
